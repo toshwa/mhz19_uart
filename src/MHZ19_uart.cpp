@@ -91,7 +91,7 @@ void MHZ19_uart::writeCommand(uint8_t cmd[], uint8_t* response) {
 	
 	if (response != NULL) {
 		int i = 0;
-		while(hserial.available() <= 0) {
+		while(hserial.available() < MHZ19_uart::RESPONSE_CNT) {
 			if( ++i > WAIT_READ_TIMES ) {
 				Serial.println("error: can't get MH-Z19 response.");
 				return;
